@@ -1,0 +1,24 @@
+--Que hacen estas funciones?
+--La función map toma una función y la aplica individualmente a cada elemento de la siguiente lista.
+--map :: (a -> b) -> [a] -> [b]
+--Ejemplo
+-- >>> map (+1) [1, 2, 3]
+--[2,3,4]
+--La función filter toma un predicado y una lista. Y devuelve los elementos 
+--que cumplen dicho predicado en la lista.
+--filter :: (a -> Bool) -> [a] -> [a]
+--Ejemplo
+-- >>> filter odd [1, 2, 3]
+--[1,3]
+-- A que equivale la expresión map succ [1, -4, 6, 2, -8], donde succ n = n+1?
+--map :: (a -> b) -> [a] -> [b]
+--succ n = n+1
+
+--map succ [1, -4, 6, 2, -8]
+--Es equivalente a 
+--[2,-3,7,3,-7]
+
+-- Y la expresión filter esPositivo [1, -4, 6, 2, -8]?
+--filter esPositivo [1, -4, 6, 2, -8]
+--Es equivalente a 
+--[1, 6, 2]
