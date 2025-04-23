@@ -1,0 +1,143 @@
+####################################################
+#          GUÍA COMPLETA DE COMPILACIÓN EN C       #
+####################################################
+
+=== MÉTODOS DE COMPILACIÓN ===
+
+[FORMA 1: Compilación separada (recomendado para proyectos grandes)]
+1. Generar objetos (.o):
+   gcc -Wall -Werror -Wextra -pedantic -std=c99 -c archivo.c
+   # Genera archivo.o
+
+2. Enlazar objetos:
+   gcc *.o -o programa
+   # Alternativa con flags:
+   gcc -Wall -Werror -Wextra -pedantic -std=c99 *.o -o programa
+
+3. Ejecutar:
+   ./programa
+
+[FORMA 2: Compilación directa (para proyectos pequeños)]
+1. Compilar y enlazar:
+   gcc -Wall -Werror -Wextra -pedantic -std=c99 archivo.c -o programa ***
+   # Versión para múltiples archivos:
+   gcc -Wall -Werror -Wextra -pedantic -std=c99 *.c -o programa
+
+2. Ejecutar:
+   ./programa
+
+=== VARIANTES ÚTILES ===
+
+[Para depuración con GDB]
+gcc -g -Wall -Wextra -std=c99 -O0 archivo.c -o programa_debug
+
+[Para producción]
+gcc -Wall -Wextra -std=c99 -O2 archivo.c -o programa_prod
+
+[Para ver todos los warnings]
+gcc -Wall -Wextra -pedantic -std=c99 archivo.c -o programa
+
+=== COMANDOS ESENCIALES ===
+
+[Ejecución básica]
+./programma          # Ejecuta normalmente
+valgrind ./programa  # Ejecuta con detector de memory leaks
+
+[Gestión de archivos]
+ls                   # Ver archivos en el directorio
+rm programa          # Eliminar ejecutable
+rm *.o               # Eliminar objetos intermedios
+
+=== SOLUCIÓN DE ERRORES COMUNES ===
+
+1. "No existe el archivo o directorio":
+   - Verificar que existe el ejecutable (ls)
+   - Asegurarse de que se completó la compilación
+
+2. "Permiso denegado":
+   - Dar permisos: chmod +x programa
+   - Verificar que es ejecutable (no un .o)
+
+3. Errores de compilación:
+   - Revisar warnings con -Wall -Wextra
+   - Verificar estándar C (-std=c99)
+
+=== VALGRIND (MEMORY LEAKS) ===
+# Ejecutar con Valgrind (detección memory leaks)
+valgrind --leak-check=full --show-leak-kinds=all ./programa
+
+# === GDB (DEPURADOR) ===
+# Iniciar depurador
+gdb ./programa
+
+# COMANDOS BÁSICOS GDB:
+# - run [args]          : Ejecuta el programa (con argumentos)
+# - break [función]     : Pone breakpoint en función (ej: break main)
+# - break [archivo:linea]: Break en línea específica (ej: break prueba.c:15)
+# - info breakpoints    : Lista todos los breakpoints
+# - delete [número]     : Elimina breakpoint (ej: delete 2)
+# - next (n)            : Ejecuta siguiente línea (no entra en funciones)
+# - step (s)            : Ejecuta siguiente línea (entra en funciones)
+# - continue (c)        : Continúa hasta próximo breakpoint
+# - finish              : Ejecuta hasta salir de la función actual
+# - print [var]         : Muestra valor de variable (ej: print x)
+# - ptype [var]         : Muestra tipo de variable
+# - set var [var]=[valor]: Cambia valor de variable (ej: set var x=5)
+# - watch [var]         : Detiene cuando variable cambia
+# - backtrace (bt)      : Muestra pila de llamadas
+# - frame [n]           : Cambia marco de pila (ej: frame 2)
+# - list                : Muestra código alrededor
+# - quit                : Sale de GDB
+
+# === EJEMPLOS COMUNES GDB ===
+# 1. Depurar desde main() con argumentos:
+#   gdb ./programa
+#   (gdb) break main
+#   (gdb) run arg1 arg2
+
+# 2. Ver dónde falla (segfault):
+#   gdb ./programa
+#   (gdb) run
+#   (Cuando falle) usar 'backtrace' para ver la pila
+
+# 3. Depurar cambio de variable:
+#   gdb ./programa
+#   (gdb) break archivo.c:30
+#   (gdb) run
+#   (gdb) watch variable_sospechosa
+#   (gdb) continue
+
+# === VALGRIND (MEMORY LEAKS) ===
+# Detección básica de leaks:
+valgrind --leak-check=yes ./programa
+
+# Detección avanzada:
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./programa
+
+# Para leaks en programas que usan malloc/free:
+valgrind --leak-check=full --show-reachable=yes ./programa
+
+# === COMPRESIÓN DE ARCHIVOS ===
+# Comprimir directorio:
+tar -czvf proyecto.tar.gz directorio/
+
+# Descomprimir:
+tar -xzvf proyecto.tar.gz
+
+# === COMANDOS ÚTILES ADICIONALES ===
+# Ver dependencias de bibliotecas:
+ldd ./programa
+
+# Limpiar archivos objeto:
+rm -f *.o
+
+# Buscar errores comunes en código:
+grep -rn "TODO" *.c *.h
+grep -rn "FIXME" *.c *.h
+
+# ===== CONSEJOS FINALES =====
+# 1. Siempre compila con -Wall -Werror para detectar warnings
+# 2. Usa -g para depurar con GDB
+# 3. Valgrind es esencial para detectar memory leaks
+# 4. Usa breakpoints estratégicos para ahorrar tiempo
+# 5. watch es útil para variables que cambian misteriosamente

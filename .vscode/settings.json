@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "assert.h": "c",
+        "stdbool.h": "c",
+        "string_view": "c"
+    }
+}

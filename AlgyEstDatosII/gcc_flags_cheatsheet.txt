@@ -1,0 +1,54 @@
+#######################################
+#           GCC FLAGS ÚTILES          #
+#      (Resumen completo para C)      #
+#######################################
+
+=== DEPURACIÓN ===
+-g        -> Incluye símbolos para GDB
+-g3       -> Símbolos extendidos (+macros)
+-ggdb     -> Optimizado para GDB
+
+=== WARNINGS ===
+-Wall     -> Habilita warnings comunes
+-Wextra   -> Warnings adicionales
+-Werror   -> Convierte warnings en errores
+-pedantic -> Estricto cumplimiento del estándar
+
+=== OPTIMIZACIÓN ===
+-O0       -> Sin optimización (debug)
+-O1       -> Optimización básica
+-O2       -> Optimización agresiva (producción)
+-O3       -> Optimización máxima
+-Os       -> Optimiza para tamaño pequeño
+
+=== ESTÁNDARES C ===
+-std=c89  -> ANSI C
+-std=c99  -> C99 (recomendado)
+-std=c11  -> C11 (moderno)
+-std=c17  -> C17 (actual)
+
+=== SEGURIDAD ===
+-fstack-protector     -> Protege stack overflows
+-D_FORTIFY_SOURCE=2  -> Chequeos de seguridad
+-fPIE -pie           -> Ejecutables posición-independiente
+
+=== ENLAZADO ===
+-l<lib>   -> Enlaza biblioteca (ej: -lm para math.h)
+-L<dir>   -> Añade ruta para bibliotecas
+-I<dir>   -> Añade ruta para headers (#include)
+-static   -> Enlace estático
+-shared   -> Genera biblioteca compartida (.so/.dll)
+
+=== ESPECIALES ===
+-v        -> Modo verbose
+-MM       -> Genera dependencias para Makefile
+-save-temps -> Guarda archivos temporales (.i, .s, .o)
+-no-pie   -> Deshabilita PIE (útil para debugging)
+
+#######################################
+# Ejemplo compilación depuración:
+# gcc -g -Wall -Wextra -std=c99 -O0 programa.c -o programa
+
+# Ejemplo compilación producción:
+# gcc -Wall -O2 -std=c11 -D_FORTIFY_SOURCE=2 programa.c -o programa
+#######################################
