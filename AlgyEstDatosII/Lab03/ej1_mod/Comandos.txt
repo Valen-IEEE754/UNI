@@ -1,5 +1,4 @@
 Ejecución del Programa Climático
-Ahora que has compilado correctamente, aquí están los pasos para ejecutar el programa y ver los resultados:
 
 1. Comando básico de ejecución
 bash
