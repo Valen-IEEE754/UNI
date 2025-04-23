@@ -1,15 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "cima_log.h"
+#include "cima_log.h"
 
-int main(void) {
-    int a[] = {-2, 8, 9, 5, 0};
-    int length = 5;
-    int result;
+void imprimir_arreglo(int a[], int length) {
+    printf("[");
+    for (int i = 0; i < length; i++) {
+        printf("%d", a[i]);
+        if (i < length-1) printf(", ");
+    }
+    printf("]\n");
+}
 
-    result = cima_log(a, length);
-
-    printf("Resultado: %i\n", result);
-
-    return EXIT_SUCCESS;
+int main() {
+    int arr[] = {1, 3, 5, 4, 2};
+    int length = sizeof(arr)/sizeof(arr[0]);
+    
+    printf("Arreglo: ");
+    imprimir_arreglo(arr, length);
+    
+    int k = cima_log(arr, length);
+    
+    printf("La cima está en la posición: %d\n", k);
+    printf("Valor de la cima: %d\n", arr[k]);
+    
+    return 0;
 }
