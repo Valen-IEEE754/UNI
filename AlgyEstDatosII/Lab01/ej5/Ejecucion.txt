@@ -1,0 +1,17 @@
+CASO A
+1. Compilación completa (incluyendo todos los módulos necesarios):
+
+gcc -Wall -Werror -Wextra -pedantic -std=c99 -c array_helpers.c fixstring.c main.c sort.c sort_helpers_alpha.c
+gcc -Wall -Wextra -std=c99 array_helpers.o fixstring.o main.o sort.o sort_helpers_alpha.o -o word_sorter_alpha
+2. Ejecución con un archivo de entrada:
+
+./word_sorter_alpha input/nombre_del_archivo.in
+
+CASO B
+1. Compilación completa (incluyendo todos los módulos necesarios):
+
+gcc -Wall -Werror -Wextra -pedantic -std=c99 -c array_helpers.c fixstring.c main.c sort.c sort_helpers_alpha.c
+gcc -Wall -Wextra -std=c99 array_helpers.o fixstring.o main.o sort.o sort_helpers_alpha.o -o word_sorter_alpha
+2. Ejecución con un archivo de entrada:
+
+./word_sorter_alpha input/nombre_del_archivo.in
