@@ -1,0 +1,27 @@
+Ejecución del Programa Climático
+Ahora que has compilado correctamente, aquí están los pasos para ejecutar el programa y ver los resultados:
+
+1. Comando básico de ejecución
+bash
+./weather_analysis input/weather_cordoba.in
+2. Opciones de ejecución
+Ver resultados en pantalla:
+bash
+# Muestra todos los datos climáticos y los análisis
+./weather_analysis input/weather_cordoba.in | less  # Para navegar con paginación
+Guardar resultados en archivo:
+bash
+# Guarda la salida completa en un archivo
+./weather_analysis input/weather_cordoba.in > resultados_completos.txt
+
+# Guarda sólo los análisis (sin los datos crudos)
+./weather_analysis input/weather_cordoba.in | grep -A100 "=== RESULTADOS DEL ANÁLISIS ===" > solo_analisis.txt
+3. Verificación contra resultados esperados
+Para comparar con los valores esperados que mencionaste:
+
+bash
+# Temperaturas máximas anuales
+./weather_analysis input/weather_cordoba.in | grep -A50 "2. Temperaturas máximas anuales"
+
+# Meses más lluviosos
+./weather_analysis input/weather_cordoba.in | grep -A50 "3. Mes más lluvioso cada año"

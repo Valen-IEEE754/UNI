@@ -2,6 +2,7 @@
     "files.associations": {
         "assert.h": "c",
         "stdbool.h": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "stdio.h": "c"
     }
 }
