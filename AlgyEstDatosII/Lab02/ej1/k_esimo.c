@@ -18,11 +18,25 @@ void swap(int a[], int i, int j);
  * @param k Posicion dentro del arreglo si estuviera ordenado.
  */
 int k_esimo(int a[], int length, int k) {
-
-    // COMPLETAR!!
-
-    return 0;
+    if (k < 0 || k >= length) {
+        printf("k está fuera de los límites del arreglo\n");
+        return -1; // Valor de error
+        }
+    int lft = 0;
+    int rgt = length - 1;
+    int ppiv = partition(a, lft, rgt);
+    while (ppiv != k) {
+        if (ppiv < k) {
+            lft = ppiv + 1;
+        } else {
+            rgt = ppiv - 1;
+        }
+        ppiv = partition(a, lft, rgt);
+    }
+    
+    return a[k];
 }
+ 
 
 int partition(int a[], int izq, int der) {
     int i, j, ppiv;
